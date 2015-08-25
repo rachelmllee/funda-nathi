@@ -1,0 +1,384 @@
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<%= javascript_include_tag 'https://cdn.respoke.io/respoke.min.js' %>
+
+<div class="brick">
+  <section id="services">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="section-heading">Select user</h3>
+
+          <div class="list-group user-list">
+            <% (User.all - [current_user]).each do |u| %>
+                <a href="#" class="list-group-item chat-list-user-item" userId="<%= u.id %>" userName="<%= u.name %>">
+                  <% if u != current_user %>
+                      <%= gravatar_for u %>
+
+                      <%= u.name %>
+
+                      <input class="user-email" value="<%= u.email %>" type="hidden">
+                      <input class="user-avatar" value="<%= gravatar_image_url(u.email) %>" type="hidden">
+                <% end %>
+                </a>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-7 col-md-offset-1">
+          <h3 class="section-heading">Enjoy your live talk!</h3>
+
+
+          <div id="chatboxarea">
+            <div id="chatbox_<%= @chat.id %>">
+              <div class="chatboxhead">
+                <div class="chatboxtitle">
+                  <i class="fa fa-comments"></i>
+                  <span id="conv-user-name">
+                    <% @chat.users.each do |u| %>
+                        u.name
+                    <% end %>
+                  </span>
+                </div>
+
+                <br clear="all"/>
+              </div>
+
+              <div class="chatboxcontent">
+                <% @messages = @chat.chat_messages %>
+                <% if @messages.count > 0 %>
+                    <% @messages.chat_messages.each do |message| %>
+                        <%=
+                            #render 'shared/message', message: message
+                        %>
+                    <% end %>
+                <% end %>
+
+              </div>
+
+              <div class="chatboxinput">
+
+                <form id="chat_form" class="new_chat_message" accept-charset="UTF-8" data-remote="true" method="post">
+                  <input name="utf8" type="hidden" value="✓">
+                  <textarea class="chatboxtextarea" name="chat_message[body]" id="chat_message_body"></textarea>
+                </form>
+
+              </div>
+
+              <!--  We will subscribe to this channel ( conversation's path ). This channel is also used to publish a notification -->
+              <script type="text/javascript">
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="space"></div>
+
+</div>
+</section>
+</div>
+
+
+
+<script>
+
+    var chatId;
+    var chatMessages = [];
+
+
+    // App ID value from the dev portal. You can play
+    // around with the supplied ID or replace it with
+    // your own.
+    var appid = '140fcd2d-7cd2-4d45-9d5d-d1fae1d19553';
+
+    var appSecret = 'd9f5dbce-651c-4a75-821c-ce73d6ec639c';
+
+    // Recipient Endpoint
+    var endpoint;
+
+    var recipientId;
+
+    // The ID that other users will identify you by (your username)
+    var endpointId = '<%= current_user.email %>';
+
+    // the role ID which you specify in respoke
+    var roleId = "B777FDCE-2C64-4013-A879-725201D2EC98";
+
+    // Life Time of access token
+    var ttl = 3600;
+
+    // Create instance of respoke client using app ID
+    var client = respoke.createClient({
+    });
+
+    // URL for getting Respoke access token
+    var baseUrl = "https://api.respoke.io/v1/tokens";
+
+    // "connect" event fired after successful connection to Respoke
+    client.listen('connect', function(e) {
+        console.log("Connected to Respoke: ", e);
+
+        client.setPresence({
+            presence: "available"
+        });
+
+        var endpoint = client.getEndpoint({
+            id: recipientId
+        });
+
+        console.log('endpoint: ', endpoint);
+
+        endpoint.listen("presence", function(e) {
+            var presence = e.target.presence;
+            if(presence == "available"){
+                // Online status
+
+            } else {
+                // Offline status
+            }
+        });
+    });
+
+    var connect = function(){
+        console.log("Try to connect to Respoke: ");
+
+        $.ajax({
+            method: "POST",
+            url: baseUrl,
+            headers: { 'Content-Type': 'application/json', 'App-Secret': appSecret },
+            data: JSON.stringify({
+                "appId": appid,
+                "endpointId": endpointId,
+                "roleId": roleId,
+                "ttl": ttl
+            }),
+            success: function(response) {
+                console.log(response);
+                var token = response.tokenId;
+                client.connect({
+                    token: token
+                });
+            }
+        });
+    };
+    (function (){
+        connect();
+    })();
+
+    client.listen("disconnect", function (evt) {
+        console.log("disconnect from respoke");
+
+        // Reconnect to Respoke
+        connect();
+    });
+
+    client.listen('message', function(evt) {
+        console.log("having income message");
+
+        var evt_message = evt.message;
+        console.log(evt_message);
+
+        if (evt_message.message.message){
+            message = evt_message.message.message;
+
+            var time = (new Date()).toLocaleTimeString("en-us", {hour: "2-digit", minute: "2-digit"});
+
+            var chatbox = $(".chatboxcontent");
+
+            chatbox.append(
+                            "<li class='other'>"  +
+                                "<div class='avatar'>" +
+                                    "<img src='" + recipientAvatar + "'></img>" +
+                                "</div>" +
+                                "<div class='chatboxmessagecontent'>" +
+                                    "<p>" + message + "</p>" +
+                                    "<time>" + time + "</time>" +
+                                "</div>" +
+                            "</li>"
+            );
+
+            chatbox.scrollTop(chatbox[0].scrollHeight);
+        } else if (evt_message.message.name){
+//            chatbox.append('<span class="seen-status self">has be seen</span>');
+        }
+    });
+
+    /* When user click on list on the left side bar */
+    $('.chat-list-user-item').click(function (e){
+        e.preventDefault();
+
+        $('.user-list-item-active').removeClass('user-list-item-active');
+
+        $('.chatboxtitle #conv-user-name').text($(this).attr('userName'));
+
+        $(this).addClass('user-list-item-active');
+
+        recipientId = $(this).children(".user-email").last()[0].value;
+        recipientAvatar = $(this).children(".user-avatar").last()[0].value;
+
+
+        //         Get chat between two users
+        $.ajax({
+            url: "/get_chat.json",
+            type: 'GET',
+            data: {
+                partner_id : $(this).attr('userId')
+            },
+            dataType: "json",
+            success: function(data) {
+
+                chatId = data['chat']['id'];
+                chatMessages = data['messages'];
+
+                console.log("chatMessages");
+                console.log(chatMessages);
+
+                var chatbox = $(".chatboxcontent");
+
+                // Reset current content before adding new
+                chatbox.children().remove();
+
+                var messageAvaClass = 'self';
+                var messageAvaSrc = '';
+
+                for (var i = 0; i < chatMessages.length; i++){
+                    if (chatMessages[i]['creator_id'] == <%= current_user.id %>){
+                        messageAvaClass = 'self';
+
+                        messageAvaSrc = '<%= gravatar_image_url(current_user.email) %>';
+                    } else {
+                        messageAvaClass = 'other';
+                        messageAvaSrc = recipientAvatar;
+                    }
+
+                    chatbox.append(
+                            <%=
+                                #j render( partial: 'chat_messages/message', :locals => {:message => {body: message}} )
+                            %>
+
+                                "<li class='" + messageAvaClass + "'>" +
+                                    "<div class='avatar'>" +
+                                        "<img src='" + messageAvaSrc + "' />" +
+                                    "</div>" +
+
+                                    "<div class='chatboxmessagecontent'>" +
+                                        "<p>" + chatMessages[i]['body'] + "</p>" +
+                                        "<time datetime='<%= Time.now %>' title='<%= Time.now.strftime("%d %b  %Y at %I:%M%p") %>'>" +
+                                        "<%= Time.now.strftime('%H:%M %p') %>" + "</time>" +
+                                    "</div>" +
+                                "</li>"
+                    );
+                }
+
+                chatbox.scrollTop(chatbox[0].scrollHeight);
+            },
+            error: function(jqXHR, textStatus) {
+                console.log((textStatus));
+            }
+        });
+    });
+
+    chatBox = {
+
+        /**
+         * Responsible for listening to the keypresses when chatting. If the Enter button is pressed,
+         * we submit our conversation form to our rails app
+         *
+         * @param event
+         * @param chatboxtextarea
+         * @param conversation_id
+         */
+        checkInputKey: function (event, chatboxtextarea, conversation_id) {
+            if (event.keyCode == 13 && event.shiftKey == 0) {
+                event.preventDefault();
+
+                message = chatboxtextarea.val();
+                message = message.replace(/^\s+|\s+$/g, "");
+
+                console.log('send message');
+
+                if (message != '') {
+                    if (!(endpoint)){
+                        endpoint = client.getEndpoint({
+                            id: recipientId
+                        });
+                    }
+
+                    // The message can be simple text
+                    endpoint.sendMessage({ message: { message: $("textarea[id^='chat_message_body']").val() } } );
+
+
+                    // create message
+                    $.ajax({
+                        url: "/chat_messages.json",
+                        type: 'POST',
+                        data: {
+                            // params.require(:chat_message).permit(:creator_id, :body, :chat_id, :is_read)
+                            chat_message: {
+                                creator_id: "<%= current_user.id %>",
+                                body: message,
+                                chat_id: chatId
+                            }
+
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+
+//                            chatId = data['chat']['id'];
+//                            console.log((chatId));
+                        },
+                        error: function(jqXHR, textStatus) {
+                            console.log((textStatus));
+                        }
+                    });
+
+                    $(chatboxtextarea).val('');
+                    $(chatboxtextarea).focus();
+
+                    var chatbox = $(".chatboxcontent");
+
+                    <% message_class_name =  'self' %>
+
+                    chatbox.append(
+                        <%=
+                            #j render( partial: 'chat_messages/message', :locals => {:message => {body: message}} )
+                        %>
+
+                        "<li class='<%=  message_class_name %>'>" +
+                            "<div class='avatar'>" +
+                                "<img src='<%= gravatar_image_url(current_user.email) %>' />" +
+                            "</div>" +
+
+                            "<div class='chatboxmessagecontent'>" +
+                                "<p>" + message + "</p>" +
+                                "<time datetime='<%= Time.now %>' title='<%= Time.now.strftime("%d %b  %Y at %I:%M%p") %>'>" +
+                                "<%= Time.now.strftime('%H:%M %p') %>" + "</time>" +
+                            "</div>" +
+                        "</li>"
+                    );
+
+                    chatbox.scrollTop(chatbox[0].scrollHeight);
+                }
+
+            }
+        }
+    };
+
+
+    /**
+     * Listen on keypress' in our chat textarea and call the
+     * chatInputKey in chat.js for inspection
+     */
+
+    $(document).on('keydown', '.chatboxtextarea', function (event) {
+        var id = $(this).data('cid');
+        chatBox.checkInputKey(event, $(this), id);
+    });
+
+
+</script>

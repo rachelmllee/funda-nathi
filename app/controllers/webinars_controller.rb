@@ -1,0 +1,3 @@
+class WebinarsController < ApplicationController
+
+end

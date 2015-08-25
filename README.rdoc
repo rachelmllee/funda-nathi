@@ -1,0 +1,46 @@
+== README
+
+- Add annotate gem for model structure comment
+
+- create seed.rb
+
+- Add Gem rails_12_factor to have full log on heroku with rails 4
+
+- Add to production.rb
+
+  config.action_mailer.default_url_options = { :host => 'funda-nahi-test.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+
+- Create Live Text Group chat using Respoke.io. This can be used to create video conference later
+
+- Add Rails admin, cancan with devise to make admin functions
+
+- Test admin at: localhost:3000/admin
+    Admin can be created only via Rails console, no way to register normally. I disable register normally
+
+    Ex: Admin.create(email: 'admin@test.com', password: 'password', password_confirmation: 'password')
+
+
+- Add config/initializers/will_paginate.rb  to fix error :per as mentionsed here:
+    https://github.com/mislav/will_paginate/issues/174
+
+* Note
+        - You need to change host url for mailer in production when deploy
+            It is in bottom of: config/environments/production.rb
+
+        - You need to add heroku add on for sending email from heroku:
+            $ heroku addons:add sendgrid:starter
+            $ heroku config:get SENDGRID_USERNAME
+            $ heroku config:get SENDGRID_PASSWORD
+
+        - You might need to delete / update action mailer configuration for heroku and send_grid in config/environment.rb
+
+        - In app/views/chats/new, I added some respoke values. You should change these information (to your account, ofcourse ). They are
+            + AppID
+            + appSecret
+            + roleId
+
+            These values can be get on your respoke.io account. You should create new app with production mode (disable development mode),
+            And add new role for that production mode. Let try respoke.io, it have a very friend User Interface
+

@@ -1,0 +1,15 @@
+<li class="list-group-item clearfix">
+  <h4>
+    <% chat.users.all.each do |u| %>
+        <%= u.name %>
+
+        <% if u != current_user %>
+            <%= gravatar_for u %>
+        <% end %>
+    <% end %>
+
+  </h4>
+
+  <p><%= chat.chat_messages.last ? chat.chat_messages.last.body : '' %>
+    <small>(<span class="text-muted"><%= chat.chat_messages.last ? chat.chat_messages.last.created_at.strftime("%-d %B %Y, %H:%M:%S") : '' %></span>)</small></p>
+</li>

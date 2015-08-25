@@ -1,0 +1,22 @@
+<br>
+
+<h3 class="course"><%= video.title %></h3>
+
+<div class="embed-container">
+	<%= embed_video(video.url) %>  
+</div>
+
+<p>
+	<%= video.description %>
+</p>
+
+<% if can_edit_resource? %>
+	<%= link_to 'Edit', edit_course_video_path(@course, video) %> 
+<% end %>
+<% if can_delete_resource? %>
+	| <%= link_to 'Destroy', [@course, video],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<br>
