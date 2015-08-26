@@ -87,6 +87,14 @@ Course.create(
 #  updated_at  :datetime         not null
 #  url         :string
 #
+User.create(
+    email: "admin@fundanathi.org",
+    password: 'password15',
+    password_confirmation: 'password15',
+    name: 'Admin',
+    phone_no: '0847240511',
+    role: 2
+)
 
 Video.create(
     title: 'Rails installation',
