@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
     has_many :webinars, :dependent => :destroy
     has_many :chats, :through => :webinars
 
+    has_one :account
+
     mount_uploader :avatar, AvatarUploader
 
     acts_as_messageable
