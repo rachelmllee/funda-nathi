@@ -80,3 +80,6 @@ end
 gem 'rails_12factor'
 
 gem 'rails_admin'
+
+gem 'carrierwave'
+gem 'cloudinary'

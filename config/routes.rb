@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get "/get_chat.json" => "chats#get_chat"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
   
   root 'home#index'
 
