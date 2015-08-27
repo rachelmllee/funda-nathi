@@ -27,33 +27,6 @@
 #  date_of_birth          :datetime
 #  role                   :integer          default(0)
 
-User.create(
-    email: "student@test.com",
-    password: 'password',
-    password_confirmation: 'password',
-    name: 'Student',
-    phone_no: '84 098 8650 525',
-    role: 0
-)
-
-User.create(
-    email: "tutor@test.com",
-    password: 'password',
-    password_confirmation: 'password',
-    name: 'Tutor',
-    phone_no: '84 098 8650 525',
-    role: 1
-)
-
-User.create(
-    email: "admin@test.com",
-    password: 'password',
-    password_confirmation: 'password',
-    name: 'Admin',
-    phone_no: '84 098 8650 525',
-    role: 2
-)
-
 
 # Table name: courses
 #
@@ -87,14 +60,6 @@ Course.create(
 #  updated_at  :datetime         not null
 #  url         :string
 #
-User.create(
-    email: "admin@fundanathi.org",
-    password: 'password15',
-    password_confirmation: 'password15',
-    name: 'Admin',
-    phone_no: '0847240511',
-    role: 2
-)
 
 Video.create(
     title: 'Rails installation',
