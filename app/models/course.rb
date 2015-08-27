@@ -19,10 +19,10 @@ class Course < ActiveRecord::Base
 
   validates :name, :category, :grade, presence: true
 
-  CATEGORIES = ['Accounting', 'Art', 'Biology', 'Business', 'Chemistry', 'Computer Science', 
-  	'Drama', 'Economics', 'English', 'Geography', 'History', 'Mathematics', 'Music', 'Physics']
+  CATEGORIES = ['Accounting', 'Life science', 'Business', 'Chemistry', 'Computer Application Technology', 
+  	 'Economics', 'English', 'Geography', 'History', 'Mathematics', 'Mathematics Literacy', 'Physics']
 
-  GRADES = ['8', '9', '10', '11', '12']
+  GRADES = ['10', '11', '12']
 
   def self.search(query)
    where("name ILIKE ? or category ILIKE ?", "%#{query}%", "%#{query}%")
