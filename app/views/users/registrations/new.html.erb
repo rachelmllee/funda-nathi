@@ -37,7 +37,7 @@
 
                     <div class="form-group text-center styled-select">
                       <%= f.label :i_am_a %>
-                      <%= f.select :role, User.roles.to_a.map { |w| [w[0].humanize, w[0]]}, class: "form-control" %>
+                      <%= f.select :role, [['Student', 'student']], class: "form-control" %>
                     </div>
 
                     <div class="actions text-center">

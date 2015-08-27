@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :admins, :skip => [:registrations, :passwords, :confirmations]
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :webinars
+  resources :chat_messages
+  resources :chats
+
+  get "/get_chat.json" => "chats#get_chat"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   root 'home#index'

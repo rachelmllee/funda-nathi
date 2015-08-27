@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  name                   :string
+#  phone_no               :string
+#  date_of_birth          :datetime
+#  role                   :integer          default(0)
+#
+
 class User < ActiveRecord::Base
 
     # Include default devise modules. Others available are:
@@ -9,6 +32,10 @@ class User < ActiveRecord::Base
     enum role: [:student, :tutor, :admin]
 
     has_many :courses
+
+    # user and chat are many to many relation, I use has_many & through webinar
+    has_many :webinars, :dependent => :destroy
+    has_many :chats, :through => :webinars
 
     acts_as_messageable
 
@@ -45,6 +72,10 @@ class User < ActiveRecord::Base
             # user.image = data["image"]
           end
         end
-      end
+    end
+
+    def role?(r)
+      role.include? r.to_s
+    end
 
 end
