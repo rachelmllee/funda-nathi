@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
     has_one :account
 
     mount_uploader :avatar, AvatarUploader
+    mount_uploader :file, FileUploader
 
     acts_as_messageable
 
