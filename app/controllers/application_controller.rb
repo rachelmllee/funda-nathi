@@ -4,11 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-    if current_user
-      courses_path
-    else
-      rails_admin.dashboard_path
-    end
+   	courses_path
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?

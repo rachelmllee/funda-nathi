@@ -25,9 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 
 # For chat capabilities
-# Add foreigner branch to mailboxer gem because of error 'undefined-method-column-for-foreigner connection adapters foreign key definition'
-gem 'mailboxer' #, :git => 'git://github.com/div/mailboxer.git', :branch => 'rails42-foreigner'
-
+gem 'mailboxer'
 gem 'will_paginate'
 gem 'gravatar_image_tag'
 
@@ -46,7 +44,7 @@ gem "font-awesome-rails"
 gem 'jquery-turbolinks'
 
 # Postgres
-gem 'pg', :group => :production
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -58,8 +56,6 @@ gem 'pg', :group => :production
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'sqlite3'
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -72,11 +68,5 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-
-  # This gem is for explaining model construct
-  gem 'annotate', '~> 2.6.6'
 end
 
-gem 'rails_12factor'
-
-gem 'rails_admin'
