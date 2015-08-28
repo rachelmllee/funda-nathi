@@ -20,13 +20,6 @@ class CoursesController < ApplicationController
   end
 
 
-  def admin
-    @courses = Course.all
-    @users =User.all
-    @tutors = User.where(role: 'tutor')
-    @students = User.where(role: 'student')
-
-  end
   
   # def get_mailbox
   #   @mailbox ||= current_user.mailbox
