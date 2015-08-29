@@ -1,8 +1,6 @@
 class HomeController < ApplicationController
- 
- 
   def index
-  @userID = User.user_id
+  @userID = current_user.user_id
   end
 
 end
