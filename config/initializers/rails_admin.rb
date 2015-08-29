@@ -15,6 +15,10 @@ RailsAdmin.config do |config|
     end
     
   end
+  
+  config.model 'Account' do
+  visible true
+  end
   # == Cancan ==
   # config.authorize_with :cancan
 
