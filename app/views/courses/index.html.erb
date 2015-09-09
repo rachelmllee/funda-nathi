@@ -1,59 +1,84 @@
-<div class="brick">
-<!-- Portfolio Grid Section -->
-<section id="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Courses | Home</h2>
-                	<div class="small-space"></div>
-					<div class="box">
-					  <div class="container-4">
-              			<%=form_tag courses_search_path, method: :get do %>
-	  						<%= text_field_tag :q, params[:q], placeholder: "Search for a course...", id: "search" %>
-	  						<%= button_tag(type: 'submit', class: "icon") do %>
-		  						<i class="fa fa-search"></i>
-	  						<% end %>
-	  					<% end %>
-					  </div>
-					</div>
+<div id="wrapper">
 
-				<%if current_user.student?%>
-				<div class="small-space"></div>
-				<%= link_to 'Request tutor', courses_path, class: "btn btn-primary" %>
-				<%end%>
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper">
+		<ul class="sidebar-nav">
+			<li class="sidebar-brand" style="color:white; padding: 100px 0 50px 0">
+					Browse Courses
+			</li>
+			<% Course::CATEGORIES.each do |category| %>
+				<li>
+					<%= link_to category, "/courses/search?utf8=✓&q=" + category.to_s + "&button=" %>
+				</li>
+			<% end %>			
+		</ul>
+	</div>
+	<!-- /#sidebar-wrapper -->
 
-                <% if can_create_course? %>
-                	<div class="small-space">
-                	<%= link_to 'New Course', new_course_path, class: "btn btn-primary" %>
-                	<div class="small-space"></div>
-                	<%= link_to 'ADMIN PAGE', courses_admin_path, class: "btn btn-primary" %>
-  					<div class="big-space">
-                <% else %>
-                	<h3 class="section-subheading text-muted">Click on a course!</h3>
-                <% end %>
-            </div>
-        </div>
-        <div class="row">
-        	<% @courses.each do |course| %>
-	            <div class="col-md-4 col-sm-6 portfolio-item">
-	            	<% course_id = course.id.to_s %>
-	            	<% link = "/courses/" + course_id %>
-	                <a href=<%= "#{link}" %> class="portfolio-link" data-toggle="modal">
-	                    <div class="portfolio-hover">
-	                        <div class="portfolio-hover-content">
-	                            <i class="fa fa-plus fa-3x"></i>
-	                        </div>
-	                    </div>
-	                    <img src="../img/portfolio/roundicons.png" class="img-responsive" alt="">
-	                </a>
-	                <div class="portfolio-caption">
-	                    <h4><%= course.name %></h4>
-	                    <p class="text-muted2"><%= course.category %></p>
-	                </div>
-	            </div>
-            <% end %>
-        </div>
-    </div>
-</section>
-</div>
+	<div id="page-content-wrapper">
 
+		<div class="brick">
+			<!-- Portfolio Grid Section -->
+			<section id="portfolio">
+				<div class="container">
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Browse Courses</a>
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<h2 class="section-heading">Courses | Home</h2>
+							<div class="small-space"></div>
+							<div class="box">
+								<div class="container-4">
+									<%=form_tag courses_search_path, method: :get do %>
+									<%= text_field_tag :q, params[:q], placeholder: "Search for a course...", id: "search" %>
+									<%= button_tag(type: 'submit', class: "icon") do %>
+									<i class="fa fa-search"></i>
+									<% end %>
+									<% end %>
+								</div>
+							</div>
+
+							<%if current_user.student?%>
+							<div class="small-space"></div>
+							<%= link_to 'Request tutor', courses_path, class: "btn btn-primary" %>
+							<%end%>
+
+							<% if can_create_course? %>
+							<div class="small-space">
+								<%= link_to 'New Course', new_course_path, class: "btn btn-primary" %>
+								<div class="small-space"></div>
+								<%= link_to 'ADMIN PAGE', courses_admin_path, class: "btn btn-primary" %>
+								<div class="big-space">
+									<% else %>
+									<h3 class="section-subheading text-muted">Click on a course!</h3>
+									<% end %>
+								</div>
+							</div>
+							<div class="row">
+								<% @courses.each do |course| %>
+								<div class="col-md-4 col-sm-6 portfolio-item">
+									<% course_id = course.id.to_s %>
+									<% link = "/courses/" + course_id %>
+									<a href=<%= "#{link}" %> class="portfolio-link" data-toggle="modal">
+										<div class="portfolio-hover">
+											<div class="portfolio-hover-content">
+												<i class="fa fa-plus fa-3x"></i>
+											</div>
+										</div>
+										<img src="../img/portfolio/roundicons.png" class="img-responsive" alt="">
+									</a>
+									<div class="portfolio-caption">
+										<h4><%= course.name %></h4>
+										<p class="text-muted2"><%= course.category %></p>
+									</div>
+								</div>
+								<% end %>
+							</div>
+						</div>
+					</section>
+				</div>
+
+			</div>
+			<!-- /#page-content-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
