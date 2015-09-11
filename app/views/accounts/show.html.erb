@@ -5,7 +5,7 @@
 
         <ul class="tabs">
             <li class="selected"><a href="#view1">Subcription information</a></li>            
-            <li ><a href="#view2">User Information</a></li>
+            <li ><a href="#view2">Account Information</a></li>
         </ul>
         <div class="tabcontents">
 
@@ -93,20 +93,65 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-10">
-                        <div class='row'>
-                            <div class="col-md-3">
-                                <% if current_user.avatar_url %>
-                                    <%= image_tag(current_user.avatar_url(:bright_face)) if current_user.avatar? %>
+                        <div class='row col-md-12'>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr  class="info"> 
+                                        <th>
+                                            User
+                                        </th>
 
-                                <% else %>
-                                    <%= image_tag 'User_Avatar.png', width: '90%', height: 'auto' %>
-                                <% end %>
-                            </div>
 
-                            <div class="col-md-9" style='margin-top: 20px; font-size: 1.5em'>
-                                <strong style="padding: 10px;"><%= @current_user.name %></strong>    
-                                <strong style="padding: 10px;"><%= @current_user.email %></strong>                                    
-                            </div>
+                                        <th>
+                                            Subscription
+                                        </th>
+
+
+                                        <th>
+                                            Reference
+                                        </th>
+
+
+                                        <th>
+                                            Credit
+                                        </th>
+
+
+                                        <th>
+                                            Payment Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <%= @account.user ? (@account.user.name ? @account.user.name : @account.user.email) : '' %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.get_subscription %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.reference %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.credit %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.Payment_status %>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
