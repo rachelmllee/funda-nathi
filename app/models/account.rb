@@ -1,4 +1,5 @@
 class Account < ActiveRecord::Base
+  NAN	  = 0
   SPECIAL = 1
   PREMIUM = 2
   STANDARD= 3
@@ -9,6 +10,8 @@ class Account < ActiveRecord::Base
 
   def get_subscription
   	case subcription
+  	when 0
+  		return 'NAN'
 	when 1
 		return 'SPECIAL'
 	when 2
