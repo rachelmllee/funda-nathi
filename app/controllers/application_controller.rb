@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user
-      @ID = current_user.user_id
       courses_path
     else
       rails_admin.dashboard_path
