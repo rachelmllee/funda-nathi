@@ -2,6 +2,9 @@ class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  before_action :require_permission!
+
+
   MAX_HISTORY_MESSAGE = 20
 
   # GET /get_chat.json
@@ -96,5 +99,11 @@ class ChatsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chat_params
       params[:chat]
+    end
+
+    def require_permission!
+      unless @permitted
+        redirect_to root_path, alert: "You need to subscribe first!"
+      end
     end
 end

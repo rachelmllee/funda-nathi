@@ -4,6 +4,8 @@ class ConversationsController < ApplicationController
   before_action :get_conversation, except: [:index, :empty_trash]
   before_action :get_box, only: [:index]
 
+  before_action :require_permission!
+
   def index
     if @box.eql? "inbox"
       
@@ -68,5 +70,11 @@ class ConversationsController < ApplicationController
       params[:box] = 'inbox'
     end
     @box = params[:box]
+  end
+  
+  def require_permission!
+    unless @permitted
+        redirect_to root_path, alert: "You need to subscribe first!"
+    end
   end
 end

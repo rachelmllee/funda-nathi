@@ -20,14 +20,27 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <%= link_to 'All Courses', courses_path %>
+                        <% if @permitted %>
+                            <%= link_to 'All Courses', courses_path %>
+                        <% else %>
+                            <%= link_to 'All Courses', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>                        
                     </li>
                     <li>
-                        <%= link_to 'Your Conversations', conversations_path %>
+                        <% if @permitted %>
+                            <%= link_to 'Your Conversations', conversations_path %>
+                        <% else %>
+                            <%= link_to 'Your Conversations', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>    
+
                     </li>
 
                     <li>
-                        <%= link_to 'Your Chats', new_chat_path %>
+                        <% if @permitted %>
+                            <%= link_to 'Your Chats', new_chat_path %>
+                        <% else %>
+                            <%= link_to 'Your Chats', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>    
                     </li>
 
                     <li>

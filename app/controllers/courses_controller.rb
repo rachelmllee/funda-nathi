@@ -4,6 +4,8 @@ class CoursesController < ApplicationController
   before_action :authorize_admin!, only: [:new, :create, :destroy]
   before_action :authorize_tutor_or_admin!, only: [:edit, :update]
 
+  before_action :require_permission!, only: [:index, :show]
+
   # before_action :get_mailbox
   # before_action :get_conversation, except: [:index, :empty_trash]
 
@@ -91,4 +93,9 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:name, :description, :category, :grade)
     end
 
-end
+    def require_permission!
+      unless @permitted
+          redirect_to root_path, alert: "You need to subscribe first!"
+      end
+    end
+end 

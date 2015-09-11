@@ -12,12 +12,24 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :get_permission
 
       protected
 
           def configure_permitted_parameters
               devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :role) }
               devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :date_of_birth, :phone_no, :role) }
+          end
+
+          def get_permission
+            @permitted = false
+            if current_user
+              user_acc = Account.where(email: current_user.email).first
+              
+              @permitted = true if user_acc && user_acc.credit && user_acc.credit != 0                             
+            end
+
+            @permitted
           end
       
 end
