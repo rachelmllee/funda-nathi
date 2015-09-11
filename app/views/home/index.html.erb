@@ -14,9 +14,12 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Funda Nathi</h2>
-
-                    <a href="https://fundanathi-payment.herokuapp.com/" class="button"> SUBSCRIBE!</a>
-                   
+                    <% if user_signed_in? %>
+                        <a href="https://fundanathi-payment.herokuapp.com/" class="button"> SUBSCRIBE</a>
+                    
+                    <% else %>
+                        	<%= link_to 'SUBSCRIBE',  new_user_registration_path, class: "btn btn-primary" %>
+                     
                     <div class="big-space"></div>
                 </div>
             </div>
@@ -83,7 +86,12 @@
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <br>
-                            <h4><a href="https://fundanathi-payment.herokuapp.com/"> SUBSCRIBE!</a></h4>
+                            <% if user_signed_in? %>
+                                    <a href="https://fundanathi-payment.herokuapp.com/" class="button"> SUBSCRIBE</a>
+                    
+                            <% else %>
+                        	        <%= link_to 'SUBSCRIBE',  new_user_registration_path, class: "btn btn-primary" %>
+                     
                         </div>
                     </li>
                 </ul>
