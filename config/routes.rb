@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "/courses/search" => "courses#search"
 
   get "/courses/admin" => "courses#admin"
+
+  get 'account' => "accounts#show"
   
   resources :conversations, only: [:index, :show, :destroy] do
     member do
