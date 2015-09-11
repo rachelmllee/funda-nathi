@@ -18,14 +18,14 @@
                         <div class="wrapper">
                             <div class="row">
                                 <div class="col-md-4">
-                                  <a class="box <%= 'active' if @account.subcription == 1%>" href="#" id="special-plan">
+                                  <a class="box <%= 'active' if @account.subcription == 1%>" href="https://fundanathi-payment.herokuapp.com/" id="special-plan">
                                     <h1>SPECIAL</h1>
                                     <div class="fontawesome-truck"></div>
                                     <p>
-                                      For this Subcription, you will get all rights to learn any courses.
+                                      For this Subcription, you will get all rights to learn any courses in your grade.
 
                                         <h5 style='text-align: left; color: #3498db'>Subscription Plan:  <%= @account.get_subscription %>
-                                        Payment Status:  <%= @account.Payment_status %>
+                                        Only R100 for the rest of 2015
                                         </h5>
 
                                       <br/>
@@ -38,14 +38,14 @@
                                 </div>
                                 
                                 <div class="col-md-4">
-                                  <a class="box <%= 'active' if @account.subcription == 3%>" href="#" "standard-plan">
+                                  <a class="box <%= 'active' if @account.subcription == 3%>" href="https://fundanathi-payment.herokuapp.com/" "standard-plan">
                                     <h1 style="color: #9b59b6">STANDARD</h1>
                                     <div class="fontawesome-plane"></div>
                                     <p>
-                                      For this Subcription, you will get all rights to learn any courses with support from Teachers
+                                      For this Subcription, you will get all rights to learn any courses but as a monthlt option
 
                                       <h5 style='text-align: left; color: #3498db'>Subscription Plan:  <%= @account.get_subscription %>
-                                        Payment Status:  <%= @account.Payment_status %>
+                                        ONLY R40 per month
                                         </h5>
                                       <br/>
                                       <br/>
@@ -58,14 +58,14 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                  <a class="box <%= 'active' if @account.subcription == 2%>" href="#" id="premium-plan">
+                                  <a class="box <%= 'active' if @account.subcription == 2%>" href="https://fundanathi-payment.herokuapp.com/" id="premium-plan">
                                     <h1 style="color: #3498db">PREMIUM</h1>
                                     <div class="fontawesome-fighter-jet"></div>
                                     <p>
-                                      For this Subcription, you will get all rights to learn any courses with support from Teachers and will be available to take online examinations
+                                      For this Subcription, you will get all rights to learn any courses with support from Teachers and will be available as well as access to virtual library coming soon.
 
                                       <h5 style='text-align: left; color: #3498db'>Subscription Plan:  <%= @account.get_subscription %>
-                                        Payment Status:  <%= @account.Payment_status %>
+                                        R500 per year 
                                         </h5>
                                       <br/>
                                       <br/>
