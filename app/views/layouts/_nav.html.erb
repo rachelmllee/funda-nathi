@@ -22,8 +22,10 @@
                     <li>
                         <% if @permitted %>
                             <%= link_to 'All Courses', courses_path %>
+                            <%= link_to 'MY ID :' <%=user_id%>, '#', { style: 'color: #d3d3d3'} %>
                         <% else %>
                             <%= link_to 'All Courses', '#', { style: 'color: #d3d3d3'} %>
+                            <%= link_to 'MY ID :'  <%=user_id%>, '#', { style: 'color: #d3d3d3'} %>
                         <% end %>                        
                     </li>
                     <li>
