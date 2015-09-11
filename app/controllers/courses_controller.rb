@@ -44,6 +44,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+    @userID =current_user.user_id
   end
 
   def show
