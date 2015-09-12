@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
             @permitted = false
             if current_user
               if current_user.role? 'student'
-                user_acc = Account.where(email: current_user.email).first
+                user_acc = Account.where(user_id: current_user.id).first
                 
                 if user_acc && user_acc.credit > 0   
                   @permitted = true 
