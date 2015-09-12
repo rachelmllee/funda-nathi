@@ -42,7 +42,8 @@
                     </div>
                     
                     <div class="form-group">
-                      <%= f.select :grade, User.roles.to_a.map , class: "form-control" %>
+                      
+                      <%= f.collection_select :grade, User::GRADES, :to_s, :to_s, class: "form-control" %>
                       
                     </div>
 
