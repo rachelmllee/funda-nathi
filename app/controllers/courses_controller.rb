@@ -22,6 +22,21 @@ class CoursesController < ApplicationController
   end
 
 
+  
+  # def get_mailbox
+  #   @mailbox ||= current_user.mailbox
+  # end
+
+  # def get_conversation
+  #   @conversation ||= @mailbox.conversations.find(params[:id])
+  # end
+
+  # def requests
+  #   @conversations = @mailbox
+  #   #@participants =@conversations.participants
+
+  # end
+
   def search
     @courses = Course.search(params[:q])
     render :index
@@ -29,8 +44,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
-    #@courses = Course.where(:grade => current_user.grade)
-    @userID =current_user.user_id
+    
   end
 
   def show
