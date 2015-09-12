@@ -68,6 +68,8 @@ class User < ActiveRecord::Base
     #                  :password => Devise.friendly_token[0,20])
     #   end
     # end
+    GRADES = ['10', '11', '12']
+
 
     def self.new_with_session(params, session)
         super.tap do |user|

@@ -43,7 +43,7 @@
                     
                     <div class="form-group">
                       
-                      <%= f.collection_select :grade, User:,:to_s, class: "form-control" %>
+                      <%= f.collection_select :grade, User::GRADES, :to_s, :to_s, class: "form-control" %>
                       
                     </div>
 
