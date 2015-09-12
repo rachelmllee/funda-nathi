@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
     mount_uploader :file, FileUploader
 
     acts_as_messageable
-    GRADES = ['10', '11', '12']
 
 
     def mailboxer_email(object)

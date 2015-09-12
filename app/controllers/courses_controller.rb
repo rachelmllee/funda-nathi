@@ -28,8 +28,8 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @Allcourses = Course.all
-    @courses = Course.where(:grade => current_user.grade)
+    @courses = Course.all
+    #@courses = Course.where(:grade => current_user.grade)
     @userID =current_user.user_id
   end
 
