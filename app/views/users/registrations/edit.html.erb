@@ -40,6 +40,8 @@
                     <div class="form-group">
                       <%= f.email_field :email, class: "form-control", placeholder: "Email *" %>
                     </div>
+                    
+                  
 
                     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -53,6 +55,11 @@
                     <div class="form-group">
                       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "New Password Confirmation" %>
                        <i>(leave blank if you don't want to change it)</i>
+                    </div>
+
+                    <div class="form-group">
+                      <%= image_tag(resource.avatar_url(:bright_face)) if resource.avatar? %>
+                      <%= f.file_field :avatar %>
                     </div>
 
                     <div class="form-group text-center styled-select">

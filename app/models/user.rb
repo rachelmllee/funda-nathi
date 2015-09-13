@@ -37,7 +37,13 @@ class User < ActiveRecord::Base
     has_many :webinars, :dependent => :destroy
     has_many :chats, :through => :webinars
 
+    has_one :account
+
+    mount_uploader :avatar, AvatarUploader
+    mount_uploader :file, FileUploader
+
     acts_as_messageable
+
 
     def mailboxer_email(object)
       email
@@ -63,6 +69,7 @@ class User < ActiveRecord::Base
     #                  :password => Devise.friendly_token[0,20])
     #   end
     # end
+    
 
     def self.new_with_session(params, session)
         super.tap do |user|

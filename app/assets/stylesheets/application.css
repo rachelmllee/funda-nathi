@@ -15,7 +15,6 @@
  *= require agency
  *= require font-awesome
  *= require tabmenu
- *= require simple-sidebar
  *= require_tree .
  *= require_self
  */

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'opportunities/index'
+
   devise_for :admins, :skip => [:registrations, :passwords, :confirmations]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -8,13 +10,15 @@ Rails.application.routes.draw do
 
   get "/get_chat.json" => "chats#get_chat"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
   
   root 'home#index'
 
   get "/courses/search" => "courses#search"
 
   get "/courses/admin" => "courses#admin"
+
+  get 'account' => "accounts#show"
   
   resources :conversations, only: [:index, :show, :destroy] do
     member do
@@ -27,6 +31,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :opps
+  
   resources :messages, only: [:new, :create]
 
   resources :users, only: [:index]

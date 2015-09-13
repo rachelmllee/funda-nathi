@@ -19,15 +19,46 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    
+                    
                     <li>
-                        <%= link_to 'All Courses', courses_path %>
+                        
+                        <%if current_user.admin?%>
+                            <%= link_to 'Admin Page', rails_admin_path %>
+                    </li> 
+                    
+                    <li>
+                        <% if @permitted %>
+                            <%= link_to 'All Courses', courses_path %>
+                            
+                        <% else %>
+                            <%= link_to 'All Courses', '#', { style: 'color: #d3d3d3'} %>
+                           
+                        <% end %>                        
                     </li>
                     <li>
-                        <%= link_to 'Your Conversations', conversations_path %>
+                        <% if @permitted %>
+                            <%= link_to 'Your Conversations', conversations_path %>
+                        <% else %>
+                            <%= link_to 'Your Conversations', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>    
+
                     </li>
 
                     <li>
-                        <%= link_to 'Your Chats', new_chat_path %>
+                        <% if @permitted %>
+                            <%= link_to 'Your Chats', new_chat_path %>
+                        <% else %>
+                            <%= link_to 'Your Chats', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>    
+                    </li>
+
+                    <li>
+                        <%= link_to 'Your Account', account_path %>
+                    </li>
+                    
+                     <li>
+                        <%= link_to 'Opportunities ', account_path %>
                     </li>
 
                     <li>
@@ -36,6 +67,8 @@
                     <li>
                         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
                     </li>
+                    
+                    
                 </ul>
             <% else %>
                 <ul class="nav navbar-nav navbar-right">

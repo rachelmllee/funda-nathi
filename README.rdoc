@@ -44,3 +44,7 @@
             These values can be get on your respoke.io account. You should create new app with production mode (disable development mode),
             And add new role for that production mode. Let try respoke.io, it have a very friend User Interface
 
++ Carrier wave with cloudinary
+    http://cloudinary.com/documentation/rails_carrierwave
+
++ https://github.com/carrierwaveuploader/carrierwave
