@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'opportunities/index'
+
   devise_for :admins, :skip => [:registrations, :passwords, :confirmations]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -29,6 +31,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :opps
+  
   resources :messages, only: [:new, :create]
 
   resources :users, only: [:index]

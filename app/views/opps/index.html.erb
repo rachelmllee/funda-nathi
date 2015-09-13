@@ -1,0 +1,55 @@
+<div class="brick">
+<!-- Portfolio Grid Section -->
+<section id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Opportunity | Desk</h2>
+                	<div class="small-space"></div>
+					<div class="box">
+					  <div class="container-4">
+              			<%=form_tag opps_search_path, method: :get do %>
+	  						<%= text_field_tag :q, params[:q], placeholder: "Search for opportunity...", id: "search" %>
+	  						<%= button_tag(type: 'submit', class: "icon") do %>
+		  						<i class="fa fa-search"></i>
+	  						<% end %>
+	  					<% end %>
+					  </div>
+					</div>
+
+				
+
+                <% if can_create? %>
+                	<div class="small-space">
+                	<%= link_to 'New Opportunity', new_opp_path, class: "btn btn-primary" %>
+                	<div class="small-space"></div>
+                	
+                <% else %>
+                	<h3 class="section-subheading text-muted">Click on an opportunity!</h3>
+                <% end %>
+            </div>
+        </div>
+        <div class="row">
+        	<% @opportunities.each do |opp| %>
+	            <div class="col-md-4 col-sm-6 portfolio-item">
+	            	<% opp_id = opp.id.to_s %>
+	            	<% link = "/opps/" + opp_id %>
+	                <a href=<%= "#{link}" %> class="portfolio-link" data-toggle="modal">
+	                    <div class="portfolio-hover">
+	                        <div class="portfolio-hover-content">
+	                            <i class="fa fa-plus fa-3x"></i>
+	                        </div>
+	                    </div>
+	                    <img src="../img/portfolio/opp.jpg" class="img-responsive" alt="">
+	                </a>
+	                <div class="portfolio-caption">
+	                    <h4><%= opp.title %></h4>
+	                    <p class="text-muted2"><%= opp.text %></p>
+	                </div>
+	            </div>
+            <% end %>
+        </div>
+    </div>
+</section>
+</div>
+

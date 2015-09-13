@@ -23,6 +23,11 @@
                     
                     <li>
                         
+                        <%if current_user.admin?%>
+                            <%= link_to 'Admin Page', rails_admin_path %>
+                    </li> 
+                    
+                    <li>
                         <% if @permitted %>
                             <%= link_to 'All Courses', courses_path %>
                             

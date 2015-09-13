@@ -1,0 +1,33 @@
+    <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading"><%= @opportunity.title %></h2>
+                <h3 class="section-subheading text-muted"> </h3>
+            </div>
+    </div>
+   
+       
+        <div class="tabcontents">
+            <div id="view1">
+                <div class="row">
+                	<div class="col-md-1">
+                	</div>
+                	<div class="col-md-10">
+                		<h2 class="section-subheading">Course Info</h2>
+                        <br>
+                		<p class="course"><strong>Category: </strong> <%= @course.category %></p>
+                		<p class="course"><strong>Grade: </strong> <%= @course.grade %></p>
+                		<p class="course"><strong>Description: </strong><%= @course.description %></p>
+
+                        <% if can_edit_course? %>
+                            <%= link_to 'Edit', edit_course_path(@course) %>
+                        <% end %>
+
+                        <% if can_delete_course? %>
+                            | <%= link_to 'Delete', course_path(@course), method: :delete, data: { confirm: 'Are you sure you want to delete this course?' } %>
+                        <% end %>
+                	</div>
+                	<div class="col-md-1">
+                	</div>
+                </div>
+            </div>
+        </div>
