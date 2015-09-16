@@ -382,13 +382,7 @@ section h4.section-subheading {
     background-image: url(../img/brick-bg.png);
     background-position: center center;
     background-attachment: fixed;
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0; 
-    margin: auto; 
-    min-width: 50%;
-    min-height: 50%;
+    
 }
 
 .service-heading {
