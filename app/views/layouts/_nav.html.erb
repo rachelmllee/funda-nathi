@@ -20,11 +20,10 @@
                         <a href="#page-top"></a>
                     </li>
                     
-                    
-                    <li>
-                        
-                        <%if current_user.admin?%>
+                    <li>      
+                        <% if current_user.admin?%>
                             <%= link_to 'Admin Page', rails_admin_path %>
+                        <% end %>
                     </li> 
                     
                     <li>
