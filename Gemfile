@@ -32,6 +32,7 @@ gem 'will_paginate'
 gem 'gravatar_image_tag'
 
 gem "paperclip", "~> 4.3"
+gem 'aws-sdk'
 
 # To use bootstrap
 gem 'twitter-bootstrap-rails'

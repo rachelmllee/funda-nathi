@@ -81,6 +81,20 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'funda-nahi-test.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
+  
+  #Configuring S3 
+  
+  config.paperclip_defaults = 
+  {
+    :storage => :s3,
+    :s3_credentials => 
+    {
+      :bucket => ENV['fundanathi'],
+      :access_key_id => ENV['AKIAIVEGSGEV2A4VKLJA'],
+      :secret_access_key => ENV['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']
+    }
+  }
+  
 end
 
 

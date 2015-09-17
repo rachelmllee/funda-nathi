@@ -1,0 +1,1 @@
+run "cd srv/www/fundanathi/current && /usr/local/bin/bundle/ exec rake assets:precompile"
