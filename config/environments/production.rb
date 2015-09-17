@@ -89,9 +89,9 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => 
     {
-      :bucket => ENV['fundanathi'],
-      :access_key_id => ENV['AKIAIVEGSGEV2A4VKLJA'],
-      :secret_access_key => ENV['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']
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
   
