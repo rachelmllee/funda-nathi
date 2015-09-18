@@ -268,8 +268,11 @@ fieldset[disabled] .btn-xl.active {
         font-size: 1.5em;
     }
 }
+
 .jumbotron{
      background: url(../img/opp.jpg) no-repeat center center;
+     opacity: 0.6;
+     
 }
 
 header {
