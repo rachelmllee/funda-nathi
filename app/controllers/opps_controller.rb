@@ -21,7 +21,7 @@ class OppsController < ApplicationController
   end
 
   def create
-  		  @opportunity = Opp.new(animal_params)
+  		  @opportunity = Opp.new(opp_params)
   
     if @opportunity.save
         redirect_to @opportunity
@@ -31,6 +31,17 @@ class OppsController < ApplicationController
   
   end
   
+  def update
+		@opportunity = Opp.find(params[:id])
+
+		if @opportunity.update(opp_params)
+			redirect_to @opportunity
+		else
+			render 'edit'
+		end
+	end
+
+  
   def destroy
   
     @opportunity = Opp.find(params[:id])
@@ -39,7 +50,7 @@ class OppsController < ApplicationController
   end
   
   private #method is not publicly accessible to routes
-	def animal_params #Purpose of the animal params is for security purposes against hackers these are strong parameters
+	def opp_params #Purpose of the animal params is for security purposes against hackers these are strong parameters
 		params.require(:opportunity).permit(:title, :text)
 	end
 
