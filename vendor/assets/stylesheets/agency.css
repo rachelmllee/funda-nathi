@@ -282,10 +282,7 @@ header {
     -o-background-size: cover;
 }
 
-header2 {
-    text-align: center;
-    color: #D3D3D3;
-    background-attachment: scroll;
+header .jumbotron {
     background-image: url(../img/opp.jpg);
     background-position: center center;
     background-repeat: none;
@@ -293,6 +290,7 @@ header2 {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    background:transparent;
 }
 
 header .intro-text {
