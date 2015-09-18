@@ -34,7 +34,7 @@
 		    <div class="container">
 		        <div class="intro-text">
 		        	<h1>Explore Opportunities</h1>
-
+					<h3>To succeed, jump as quickly at opportunities as you do at conclusions. -Benjamin Franklin</h3>
 		            <div class="big-space"></div>
 		        </div>
 		    </div>
@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3>All Opportunities</h3>
-                <p>To succeed, jump as quickly at opportunities as you do at conclusions. -Benjamin Franklin</p>
+                
                 <% if can_create? %>
 					<%= link_to 'New Opportunity', new_opp_path, class: "btn btn-primary" %>
    			    <% end %>
@@ -63,7 +63,7 @@
                     <img src="../img/inspire.jpeg" alt="">
                     <div class="caption">
                         <h3><%=opp.title%></h3>
-                        <p>opp.text</p>
+                        <p><%=opp.text%></p>
                         
                         <% opp_id = opp.id.to_s %>
                         <% link = "/opps/" + opp_id %>
