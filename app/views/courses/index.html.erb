@@ -55,7 +55,7 @@
 							</div>
 							<div class="row">
 								<% @courses.each do |course| %>
-								<div class="col-md-4 col-sm-6 portfolio-item">
+								<div class="col-md-4 col-sm-6 portfolio-item fixedheight">
 									<% course_id = course.id.to_s %>
 									<% link = "/courses/" + course_id %>
 									<a href=<%= "#{link}" %> class="portfolio-link" data-toggle="modal">
