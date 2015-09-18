@@ -282,7 +282,7 @@ header {
     -o-background-size: cover;
 }
 
-header2 {
+header .header2 {
     background-image: url(../img/opp.jpg);
     background-position: center center;
     background-repeat: none;
