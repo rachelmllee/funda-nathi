@@ -281,6 +281,12 @@ fieldset[disabled] .btn-xl.active {
     margin-bottom: 3px;
 }
 
+.oppsfixedheight{
+    height: 600px;
+    margin-bottom: 3px;
+}
+
+
 header {
     text-align: center;
     color: #000000;
