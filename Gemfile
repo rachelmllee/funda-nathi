@@ -47,8 +47,6 @@ gem "font-awesome-rails"
 # Jquery turbolinks
 gem 'jquery-turbolinks'
 
-# Postgres
-gem 'pg', :group => :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
