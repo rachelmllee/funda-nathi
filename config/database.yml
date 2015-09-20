@@ -15,6 +15,16 @@ default: &default
   port: 3306
   pool: 5
 
+production:
+  adapter: mysql
+  encoding: utf8
+  database: fundanathi
+  username: root
+  password: patch-it15
+  host: fundanathi.cuvrwmmvc5en.us-west-1.rds.amazonaws.com
+  port: 3306
+  pool: 5
+
 development:
   adapter: mysql
   encoding: utf8
@@ -24,6 +34,8 @@ development:
   host: fundanathi.cuvrwmmvc5en.us-west-1.rds.amazonaws.com
   port: 3306
   pool: 5
+  
+  
 
 
 #  username: postgres
