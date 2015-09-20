@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creator_id: 1
+  body: MyString
+  chat_id: 
+  is_read: false
+
+two:
+  creator_id: 1
+  body: MyString
+  chat_id: 
+  is_read: false

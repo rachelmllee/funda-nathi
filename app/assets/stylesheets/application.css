@@ -1,0 +1,43 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require bootstrap.min
+ *= require agency
+ *= require font-awesome
+ *= require tabmenu
+ *= require simple-sidebar
+ *= require_tree .
+ *= require_self
+ */
+
+ .styled-select {
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+ }
+ .small-space {
+ 	margin: 30px;
+ }
+ .space {
+ 	margin: 50px;
+ }
+ .big-space {
+ 	margin: 80px;
+ }
+ h3.course {
+ 	font-family: "Roboto Slab", serif;
+ }

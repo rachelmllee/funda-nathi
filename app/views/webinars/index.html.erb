@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Webinars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Chat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @webinars.each do |webinar| %>
+      <tr>
+        <td><%= webinar.user %></td>
+        <td><%= webinar.chat %></td>
+        <td><%= link_to 'Show', webinar %></td>
+        <td><%= link_to 'Edit', edit_webinar_path(webinar) %></td>
+        <td><%= link_to 'Destroy', webinar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Webinar', new_webinar_path %>

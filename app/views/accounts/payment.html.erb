@@ -1,0 +1,97 @@
+<html>
+	<title>
+		Order page
+	</title>
+	
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"> </script>
+		<script type="text/javascript" src="assets/javascript/merchant.js"></script>
+	
+	</head>
+
+ <body onload="" style="background-image:url('payment.jpg');background-attachment:fixed; background-size:cover;">
+	
+		<div class="col-sm-offset-4 col-sm-6" style="background-color:gray; width:390px;margin-top:100px; border-radius:6px;">
+			
+			<form  method="get" name="frmPay" id="frmPay">
+			
+				<!-- Receiver Details -->
+				<input type="hidden" id="id" name="merchant_id" value="">
+				<input type="hidden" id="key" name="merchant_key" value="">
+				<input type="hidden" id="return" name="return_url" value="">
+				<input type="hidden" id="cancel" name="cancel_url" value="">
+				<input type="hidden" id="notify" name="notify_url" value="">
+				
+				<br>
+				<!-- Payer Details -->
+				<center><h3 style="color:white;font-weight:700;"><i>Fundanathi Payment Form</i></h3></center>
+				<p id="err" style="color:red;"><p>
+				<div class="form-group">
+					<label for="firstname">First Name</label>
+					<input type="text" class="form-control" id="firstname" name="name_first" placeholder="first name">
+				</div>
+				
+				<div class="form-group">
+					<label for="lastname">Last Name</label>
+					<input type="text" class="form-control" id="lastname" name="name_last" placeholder="last name">
+				</div>
+				
+				<div class="form-group">
+					<label for="email">Email address</label>
+					<input type="email" class="form-control" id="email" name="email_address" placeholder="Email">
+				</div>
+				
+				<!-- Transaction Details -->
+				<input type="hidden" name="m_payment_id" id="m_payment_id" value="">
+				<input type="hidden" name="amount" id="amount">
+				<div class="form-group">
+				  <label for="sel1">Subscription type:</label>
+				  <select class="form-control" id="package" value="">
+					<option>Special Package R100 for 3 months</option>
+					
+					<option>Standard package R40 p/month</option>
+				  </select>
+				</div>
+				<input type="hidden" name="item_name" value="Special package">
+				<input type="hidden" name="item_description" value="Access to all course materials, both videos and written. There is also access to tutors and discussion groups. This is valid up to 20 December.
+					  terms and conditions apply">
+				<div class="form-group">
+					<label for="stu_id">Student ID</label>
+					<input type="text" class="form-control" id="stu_id" name="custom_str1" value="" placeholder="Student ID">
+				</div>
+				<!--<div class="form-group">
+				  <label for="sel1">Subscription type:</label>
+				  <select class="form-control" id="package" name="package">
+					<option>Special Package R100 for 3 months</option>
+					<option>Premium package R75 p/month</option>
+					<option>Standard package R50 p/month</option>
+				  </select>
+				</div>  -->
+				
+				<!-- Transaction Options -->
+				<input type="hidden" name="email_confirmation" value="1">
+
+				
+				<div class="checkbox">
+					<label>
+					  <input type="checkbox" id="accept"> I accept <a>terms</a> and conditions.
+					</label>
+				</div>
+				
+				<button type="button" onclick="transact('test')" class="btn btn-default pull-right">Proceed to Payment</button>
+				<br>
+				<br>
+				<br>
+				<center><p style="font-size:10px;"> powered by PayFast engine</p></center>
+			</form>
+			<center id="error" style="display:none;color:red;">Error</center>
+		
+		</div>
+	
+	
+	</body>
+	
+
+</html>

@@ -1,0 +1,89 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to "Funda Nathi", root_path, class: "navbar-brand page-scroll" %>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <% if user_signed_in? %>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                    <li>      
+                        <% if current_user.admin?%>
+                            <%= link_to 'Admin Page', rails_admin_path %>
+                        <% end %>
+                    </li> 
+                    
+                    <li>
+                        <% if @permitted %>
+                            <%= link_to 'All Courses', courses_path %>
+                            
+                        <% else %>
+                            <%= link_to 'All Courses', '#', { style: 'color: #d3d3d3'} %>
+                           
+                        <% end %>                        
+                    </li>
+                    <li>
+                        <% if @permitted %>
+                            <%= link_to 'Your Conversations', conversations_path %>
+                        <% else %>
+                            <%= link_to 'Your Conversations', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>    
+
+                    </li>
+
+                    <li>
+                        <% if @permitted %>
+                            <%= link_to 'Your Chats', new_chat_path %>
+                        <% else %>
+                            <%= link_to 'Your Chats', '#', { style: 'color: #d3d3d3'} %>
+                        <% end %>    
+                    </li>
+
+                    <li>
+                        <%= link_to 'Your Account', account_path %>
+                    </li>
+                    
+                     <li>
+                        <%= link_to 'Opportunities ', opps_path %>
+                    </li>
+
+                    <li>
+                        <%= link_to 'Edit profile', edit_user_registration_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                    </li>
+                    
+                    
+                </ul>
+            <% else %>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <%= link_to "Sign up", new_user_registration_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Login", new_user_session_path %>
+                    </li>
+                </ul>
+            <% end %>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @webinar.user %>
+</p>
+
+<p>
+  <strong>Chat:</strong>
+  <%= @webinar.chat %>
+</p>
+
+<%= link_to 'Edit', edit_webinar_path(@webinar) %> |
+<%= link_to 'Back', webinars_path %>

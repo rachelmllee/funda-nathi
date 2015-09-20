@@ -1,0 +1,171 @@
+<div class="brick">
+<section id="services">
+    <div class="container">
+        <%= link_to 'Back', root_path, {class: 'btn btn-default', style: 'margin-bottom: 20px;'} %>
+        
+        <b><h3 class="section-heading"> User ID : <%=@account.user_id %></h3></b>
+        
+        <ul class="tabs">
+            <li class="selected"><a href="#view1">Subcription information</a></li>            
+            <li ><a href="#view2">Account Information</a></li>
+        </ul>
+        <div class="tabcontents">
+
+            <div id="view1">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+
+                        <div class="wrapper">
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <a class="box <%= 'active' if @account.subcription == 1%>" href="https://fundanathi-payment.herokuapp.com/" id="special-plan">
+                                    <h1>LAUNCH SPECIAL </h1>
+                                    <div class="fontawesome-truck"></div>
+                                    <p>
+                                      For this Subcription, you will get all rights to learn any courses in your grade.
+
+                                        <h5 style='text-align: left; color: #3498db'>
+                                        R100 for 3 months
+                                        </h5>
+
+                                      <br/>
+                                      <br/>
+                                    </p>
+                                    <% if @account.subcription != 1 %>
+                                        <div class="btn">Select Plan</div>
+                                    <% end %>
+                                  </a>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                  <a class="box <%= 'active' if @account.subcription == 3%>" href="https://fundanathi-payment.herokuapp.com/" "standard-plan">
+                                    <h1 style="color: #9b59b6">STANDARD</h1>
+                                    <div class="fontawesome-plane"></div>
+                                    <p>
+                                      For this Subcription, you will get all rights to learn any courses but as a monthlt option
+
+                                      <h5 style='text-align: left; color: #3498db'>
+                                        R40 monthly
+                                        </h5>
+                                      <br/>
+                                      <br/>
+                                    </p>
+
+                                    <% if @account.subcription != 3 %>
+                                        <div class="btn" style="background-color: #9b59b6">Select Plan</div>
+                                     <%end%>    
+                                  </a>                               
+                                </div>
+
+                                <div class="col-md-4">
+                                  <a class="box <%= 'active' if @account.subcription == 2%>" href="https://fundanathi-payment.herokuapp.com/" id="premium-plan">
+                                    <h1 style="color: #3498db">PREMIUM</h1>
+                                    <div class="fontawesome-fighter-jet"></div>
+                                    <p>
+                                      For this Subcription, you will get all rights to learn any courses with support from Teachers and will be available as well as access to virtual library coming soon.
+
+                                      <h5 style='text-align: left; color: #3498db'>
+                                        R500 yearly
+                                        </h5>
+                                      <br/>
+                                      <br/>
+                                    </p>
+
+                                    <% if @account.subcription != 2 %>
+                                        <div class="btn" style="background-color: #3498db">Select Plan</div>
+                                    <%end%>
+                                    
+                                  </a>                               
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="view2">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+                        <div class='row col-md-12'>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr  class="info"> 
+                                        <th>
+                                            User
+                                        </th>
+
+
+                                        <th>
+                                            Subscription
+                                        </th>
+                                         <th>
+                                            User ID
+                                        </th>
+
+
+                                        <th>
+                                            Reference
+                                        </th>
+
+
+                                        <th>
+                                            Credit
+                                        </th>
+
+
+                                        <th>
+                                            Payment Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <%= @account.user ? (@account.user.name ? @account.user.name : @account.user.email) : '' %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.get_subscription %>
+                                        </td>
+                                        
+                                        <td>
+                                            <%= @account.user_id%>
+                                        </td>
+
+                                        <td>
+                                            <%= @account.reference %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.credit %>
+                                        </td>
+
+
+                                        <td>
+                                            <%= @account.Payment_status %>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</section>
+</div>
