@@ -26,7 +26,11 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
+<<<<<<< HEAD
     background: #006660;
+=======
+    background: #000;
+>>>>>>> 5128484f20c7eea9d8ee00e59ca04435ca4bac5c
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -72,7 +76,11 @@
 
 .sidebar-nav li a:hover {
     text-decoration: none;
+<<<<<<< HEAD
     color: #FFCC00;
+=======
+    color: #fff;
+>>>>>>> 5128484f20c7eea9d8ee00e59ca04435ca4bac5c
     background: rgba(255,255,255,0.2);
 }
 

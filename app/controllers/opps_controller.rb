@@ -21,8 +21,9 @@ class OppsController < ApplicationController
   end
 
   def create
+
   		  @opportunity = Opp.new(opp_params)
-  
+
     if @opportunity.save
         redirect_to @opportunity
     else
@@ -31,6 +32,7 @@ class OppsController < ApplicationController
   
   end
   
+
   def update
 		@opportunity = Opp.find(params[:id])
 
@@ -41,7 +43,6 @@ class OppsController < ApplicationController
 		end
 	end
 
-  
   def destroy
   
     @opportunity = Opp.find(params[:id])
@@ -50,7 +51,9 @@ class OppsController < ApplicationController
   end
   
   private #method is not publicly accessible to routes
+
 	def opp_params #Purpose of the opp params is for security purposes against hackers these are strong parameters
+
 		params.require(:opportunity).permit(:title, :text)
 	end
 

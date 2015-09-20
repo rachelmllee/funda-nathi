@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'account' => "accounts#show"
   
+
   get '/account/payment' => "accounts#edit"
   
   resources :conversations, only: [:index, :show, :destroy] do
@@ -34,9 +35,9 @@ Rails.application.routes.draw do
   end
 
   resources :opps
-  
+
   resources :accounts
-  
+
   resources :messages, only: [:new, :create]
 
   resources :users, only: [:index]

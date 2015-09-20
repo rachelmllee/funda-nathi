@@ -21,5 +21,14 @@
 //= require jqBootstrapValidation
 //= require agency
 //= require tabmenu
+
 //= require simple-sidebar
 //= require_tree .
+
+
+// Javascript for toggle courses menu
+$("#menu-toggle").click(function(e) {
+	e.preventDefault();
+	$("#wrapper").toggleClass("toggled");
+});
+

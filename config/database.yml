@@ -5,6 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
+
   adapter: mysql5.6
   encoding: utf8
   database: fundanathi
@@ -13,7 +14,7 @@ default: &default
   host: fundanathi.cuvrwmmvc5en.us-west-1.rds.amazonaws.com
   port: 3306
   pool: 5
-  
+
 development:
   adapter: mysql5.6
   encoding: utf8
@@ -23,6 +24,7 @@ development:
   host: fundanathi.cuvrwmmvc5en.us-west-1.rds.amazonaws.com
   port: 3306
   pool: 5
+
 
 #  username: postgres
 #  password: password
@@ -38,5 +40,3 @@ test:
   host: fundanathi.cuvrwmmvc5en.us-west-1.rds.amazonaws.com
   port: 3306
   pool: 5
-  
-  

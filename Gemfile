@@ -32,8 +32,8 @@ gem 'will_paginate'
 gem 'gravatar_image_tag'
 
 gem "paperclip", "~> 4.3"
-gem 'aws-sdk', '< 2.0'
 
+gem 'aws-sdk', '< 2.0'
 
 # To use bootstrap
 gem 'twitter-bootstrap-rails'
@@ -61,7 +61,9 @@ gem 'pg', :group => :production
 
 group :development, :test do
   gem 'sqlite3'
+
   gem 'mysql', '~> 2.9.1'
+
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
