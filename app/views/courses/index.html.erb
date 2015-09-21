@@ -39,7 +39,7 @@
 
 							<%if current_user.student?%>
 							<div class="small-space"></div>
-							<%= link_to 'Request tutor', courses_path, class: "btn btn-primary" %>
+							<%= link_to 'Request tutor', conversations_path, class: "btn btn-primary" %>
 							<%end%>
 
 							<% if can_create_course? %>
