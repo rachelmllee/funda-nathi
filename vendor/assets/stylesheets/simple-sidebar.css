@@ -73,7 +73,7 @@
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #FFCC00;
-    background: rgba(255,255,255,0.2);
+    background-color: #006666;
 }
 
 .sidebar-nav li a:active,
@@ -92,7 +92,7 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: #006666;
     background: none;
 }
 
