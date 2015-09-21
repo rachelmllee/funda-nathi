@@ -21,8 +21,6 @@
 //= require jqBootstrapValidation
 //= require agency
 //= require tabmenu
-
-//= require simple-sidebar
 //= require_tree .
 
 
