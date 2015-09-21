@@ -269,7 +269,6 @@ fieldset[disabled] .btn-xl.active {
     }
 }
 
-<<<<<<< HEAD
 .jumbotron{
      background: url(../img/opp.jpg) no-repeat center center;
      height: 600px;
@@ -288,8 +287,6 @@ fieldset[disabled] .btn-xl.active {
 }
 
 
-=======
->>>>>>> 5128484f20c7eea9d8ee00e59ca04435ca4bac5c
 header {
     text-align: center;
     color: #000000;
@@ -303,11 +300,8 @@ header {
     -o-background-size: cover;
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 5128484f20c7eea9d8ee00e59ca04435ca4bac5c
 header .intro-text {
     padding-top: 100px;
     padding-bottom: 50px;
@@ -408,10 +402,7 @@ section h4.section-subheading {
     background-image: url(../img/brick-bg.png);
     background-position: center center;
     background-attachment: fixed;
-<<<<<<< HEAD
     
-=======
->>>>>>> 5128484f20c7eea9d8ee00e59ca04435ca4bac5c
 }
 
 .service-heading {
