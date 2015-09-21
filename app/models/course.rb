@@ -25,6 +25,6 @@ class Course < ActiveRecord::Base
   GRADES = ['10', '11', '12']
 
   def self.search(query)
-   where("name ILIKE ? or category ILIKE ?", "%#{query}%", "%#{query}%")
+   where("name LIKE ? or category LIKE ?", "%#{query}%", "%#{query}%")
   end
 end
