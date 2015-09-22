@@ -307,9 +307,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   will_paginate
-<<<<<<< HEAD
-
+  
 BUNDLED WITH
    1.10.6
-=======
->>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
