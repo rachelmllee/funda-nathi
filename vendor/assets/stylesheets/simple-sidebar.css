@@ -73,7 +73,11 @@
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #FFCC00;
+<<<<<<< HEAD
     background-color: #006666;
+=======
+    background: rgba(255,255,255,0.2);
+>>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
 }
 
 .sidebar-nav li a:active,
@@ -92,7 +96,11 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
+<<<<<<< HEAD
     color: #006666;
+=======
+    color: #fff;
+>>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
     background: none;
 }
 
@@ -122,4 +130,8 @@
         position: relative;
         margin-right: 0;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10

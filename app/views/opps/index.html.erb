@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,3 +90,66 @@
 </body>
 
 </html>
+=======
+<!-- Page Content -->
+<div class="container">
+  <header class="jumbotron">
+      <div class="container">
+          <div class="intro-text">
+             <h1>Explore Opportunities</h1>
+             <h3>To succeed, jump as quickly at opportunities as you do at conclusions. -Benjamin Franklin</h3>
+             <div class="big-space"></div>
+         </div>
+     </div>
+ </header>
+
+ <hr>
+
+<div class="brick">
+            <!-- Portfolio Grid Section -->
+            <section id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">Opportunities | Home</h2>
+                            <div class="small-space"></div>
+
+                            <% if can_create_course? %>
+                            <div class="small-space"></div>
+                                <%= link_to 'New Opportunity', new_opp_path, class: "btn btn-primary" %>
+                                <div class="big-space"></div>
+                            <% end %>
+                            <div class="row">
+                                <% @opportunities.each do |opp| %>
+                                <div class="col-md-3 col-sm-6 hero-feature oppsfixedheight">
+                                    <div class="thumbnail">
+                                        <img src="../img/inspire.jpeg" class="img-responsive" alt="">
+                                        <div class="caption">
+                                            <h3><%= opp.title %></h3>
+                                            <p><%= opp.text %></p>
+
+                                            <% opp_id = opp.id.to_s %>
+                                            <% link = "/opps/" + opp_id %>
+                                            <a href=<%= "#{link}" %> class="portfolio-link" data-toggle="modal">
+                                                <div class="portfolio-hover">
+                                                    <div class="portfolio-hover-content">
+                                                       <i class="fa fa-plus fa-3x"></i>
+                                                   </div>
+                                               </div>
+
+                                               <p><a href=<%= "#{link}" %> class="btn btn-primary">More Info</a></p>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <% end %>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+>>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10

@@ -16,6 +16,10 @@
  *= require font-awesome
  *= require tabmenu
  *= require simple-sidebar
+<<<<<<< HEAD
+=======
+ *= require heroic-features
+>>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
  *= require_tree .
  *= require_self
  */

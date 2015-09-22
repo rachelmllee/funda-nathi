@@ -32,6 +32,7 @@ gem 'will_paginate'
 gem 'gravatar_image_tag'
 
 gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '< 2.0'
 
 gem 'aws-sdk', '< 2.0'
 
@@ -85,4 +86,8 @@ gem 'rails_12factor'
 gem 'rails_admin'
 
 gem 'carrierwave'
+<<<<<<< HEAD
 gem 'cloudinary'
+=======
+gem 'cloudinary'
+>>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
