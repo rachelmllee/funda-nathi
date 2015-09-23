@@ -19,12 +19,8 @@ Rails.application.routes.draw do
   get "/courses/admin" => "courses#admin"
 
   get 'account' => "accounts#show"
-<<<<<<< HEAD
-  
 
   get '/account/payment' => "accounts#edit"
-=======
->>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
   
   resources :conversations, only: [:index, :show, :destroy] do
     member do
@@ -38,13 +34,9 @@ Rails.application.routes.draw do
   end
 
   resources :opps
-<<<<<<< HEAD
 
   resources :accounts
 
-=======
-  
->>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
   resources :messages, only: [:new, :create]
 
   resources :users, only: [:index]
