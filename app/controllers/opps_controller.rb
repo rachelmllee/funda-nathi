@@ -50,7 +50,7 @@ class OppsController < ApplicationController
   private #method is not publicly accessible to routes
 
 	def opp_params #Purpose of the opp params is for security purposes against hackers these are strong parameters
-		params.require(:opportunity).permit(:title, :text)
+		params.require(:opp).permit(:title, :text)
 	end
 
 end
