@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150921075436) do
 
   create_table "accounts", force: :cascade do |t|
@@ -25,21 +24,6 @@ ActiveRecord::Schema.define(version: 20150921075436) do
     t.string   "email",          limit: 255
     t.datetime "session_stamp"
     t.string   "Payment_status", limit: 255
-=======
-ActiveRecord::Schema.define(version: 20150912230422) do
-
-  create_table "accounts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "subcription"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "reference"
-    t.integer  "credit"
-    t.string   "name"
-    t.string   "email"
-    t.datetime "session_stamp"
-    t.string   "Payment_status"
->>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
   end
 
   create_table "admins", force: :cascade do |t|
@@ -95,19 +79,11 @@ ActiveRecord::Schema.define(version: 20150912230422) do
     t.string   "upload_content_type", limit: 255
     t.integer  "upload_file_size",    limit: 4
     t.datetime "upload_updated_at"
-<<<<<<< HEAD
     t.integer  "course_id",           limit: 4
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "upload",              limit: 255
     t.string   "document",            limit: 255
-=======
-    t.integer  "course_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "upload"
-    t.string   "document"
->>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
   end
 
   add_index "documents", ["course_id"], name: "index_documents_on_course_id", using: :btree
@@ -173,13 +149,6 @@ ActiveRecord::Schema.define(version: 20150912230422) do
     t.string   "Link",       limit: 255
   end
 
-  create_table "opps", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -196,17 +165,10 @@ ActiveRecord::Schema.define(version: 20150912230422) do
     t.string   "name",                   limit: 255
     t.string   "phone_no",               limit: 255
     t.datetime "date_of_birth"
-<<<<<<< HEAD
     t.integer  "role",                   limit: 4,   default: 0
     t.string   "avatar",                 limit: 255
     t.string   "file",                   limit: 255
     t.string   "grade",                  limit: 255
-=======
-    t.integer  "role",                   default: 0
-    t.string   "avatar"
-    t.string   "file"
-    t.string   "grade"
->>>>>>> cdab4e810dd6dc61f8667973191e9cf1c564fe10
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
