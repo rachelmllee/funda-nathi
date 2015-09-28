@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
 
   def index
     #@courses = Course.all
-    @courses =Course.where (:grade => current_user.grade) 
+    @courses =Course.where(:grade => current_user.grade) 
     
   end
 
