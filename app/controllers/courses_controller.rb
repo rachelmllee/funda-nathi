@@ -43,8 +43,8 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
-    #@courses =Course.where(:grade => current_user.grade) 
+    #@courses = Course.all
+    @courses =Course.where(:grade => current_user.grade) 
     
   end
 
